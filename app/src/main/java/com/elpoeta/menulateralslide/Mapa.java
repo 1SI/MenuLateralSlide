@@ -4,12 +4,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Mapa extends FragmentActivity {
+public class Mapa extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
@@ -18,7 +21,24 @@ public class Mapa extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
         setUpMapIfNeeded();
+
+
+
     }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                new LatLng(41.889, -87.622), 16));
+
+        // You can customize the marker image using images bundled with
+        // your app, or dynamically generated bitmaps.
+        map.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
+                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                .position(new LatLng(41.889, -87.622)));
+    }
+
 
     @Override
     protected void onResume() {
