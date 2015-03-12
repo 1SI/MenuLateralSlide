@@ -3,7 +3,7 @@ package com.elpoeta.menulateralslide.database.orm;
 /**
  * Created by yonseca on 12/03/15.
  */
-public class seas01 {
+public class Seas01 {
 
     private int id;
     private String nombre;
@@ -12,10 +12,10 @@ public class seas01 {
     private String latitud;
     private String imagen;
 
-    public seas01() {
+    public Seas01() {
     }
 
-    public seas01(int id, String nombre, String descripcion, String longitud, String latitud, String imagen) {
+    public Seas01(int id, String nombre, String descripcion, String longitud, String latitud, String imagen) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
