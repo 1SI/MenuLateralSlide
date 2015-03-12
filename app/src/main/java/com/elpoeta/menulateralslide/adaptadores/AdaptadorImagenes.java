@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.SimpleAdapter;
 
 import com.elpoeta.menulateralslide.R;
+import com.elpoeta.menulateralslide.database.orm.Seas01;
+import com.elpoeta.menulateralslide.staticdata.ListaElementos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,19 +24,18 @@ public class AdaptadorImagenes extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        //Iterator iter = DatosSesion.getListaContactos().entrySet().iterator();
 
         // Each row in the list stores country name, currency and flag
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
         HashMap<String, String> hm = new HashMap<String, String>();
-/*
-        while (iter.hasNext()) {
-            Map.Entry tupla = (Map.Entry) iter.next();
-            Item datos = (Item) tupla.getValue();
-            hm.put("imagen", datos.getRutaImagen());
-            hm.put("descripcion", datos.getDescripcion());
+
+        for (Seas01 fila : ListaElementos.getDatosSeas()) {
+            hm.put("imagen", "http://thedevpotato.net76.net/img/" + fila.getImagen());
+            hm.put("descripcion", fila.getDescripcion());
+            hm.put("id", Integer.toString(fila.getId()));
             aList.add(hm);
-        }*/
+        }
+
         // Keys used in Hashmap
         String[] from = {"imagen", "descripcion"};
 
