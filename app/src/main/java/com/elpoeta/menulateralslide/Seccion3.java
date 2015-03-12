@@ -15,7 +15,7 @@ public class Seccion3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.seccion3, container, false);
+        View rootView = inflater.inflate(R.layout.activity_mapa, container, false);
 
         return rootView;
     }

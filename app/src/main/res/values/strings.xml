@@ -25,5 +25,7 @@
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="txtsection2string">Pene</string>
+    <string name="title_activity_mapa">Map</string>
 
 </resources>
