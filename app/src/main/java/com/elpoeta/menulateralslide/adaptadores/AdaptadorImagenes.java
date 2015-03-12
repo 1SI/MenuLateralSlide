@@ -44,7 +44,7 @@ public class AdaptadorImagenes extends ListFragment {
 
         // Instantiating an adapter to store each items
         // R.layout.listview_layout defines the layout of each item
-        SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), aList, R.layout.seccion2, from, to);
+        SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), aList, R.layout.elemento_lista, from, to);
         setListAdapter(adapter);
 
         return super.onCreateView(inflater, container, savedInstanceState);

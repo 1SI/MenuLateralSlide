@@ -17,7 +17,7 @@ public class Seccion1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         new GetData().execute();
-        View rootView = inflater.inflate(R.layout.seccion1, container, false);
+        View rootView = inflater.inflate(R.layout.seccion2, container, false);
 
         return rootView;
     }

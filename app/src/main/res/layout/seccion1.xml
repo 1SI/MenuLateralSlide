@@ -10,10 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.svalero.loginsanvalero.ListaActivity" >
 
-    <ListView
-        android:id="@+id/LstListaObjetos"
+    <fragment
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
-
+        android:layout_height="wrap_content"
+        android:name="com.elpoeta.menulateralslide.adaptadores.AdaptadorImagenes"
+        android:id="@+id/fragment"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
