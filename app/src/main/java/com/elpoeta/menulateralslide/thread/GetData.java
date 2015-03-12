@@ -58,7 +58,7 @@ public class GetData extends AsyncTask<Void, Void, JSONArray> {
              * los datos para montar la lista
              */
             Object datos = post.getServerData(parametros,
-                    "http://thedevpotato.net76.net/public_html/getSEAS.php");
+                    "http://thedevpotato.net76.net/getSEAS.php");
             return (JSONArray) datos;
 
             // Y ya.
