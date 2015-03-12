@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleAdapter;
 
+import com.elpoeta.menulateralslide.R;
+import com.elpoeta.menulateralslide.data.Item;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,21 +33,20 @@ public class AdaptadorImagenes extends ListFragment {
 
         while (iter.hasNext()) {
             Map.Entry tupla = (Map.Entry) iter.next();
-            Contacto datos = (Contacto) tupla.getValue();
-            hm.put("nombre", "Persona : " + datos.getNombre() + " " + datos.getApellido());
-            hm.put("email", "D : " + datos.getEmail());
-            hm.put("flag", Integer.toString(R.drawable.contacto));
+            Item datos = (Item) tupla.getValue();
+            hm.put("imagen", datos.getRutaImagen());
+            hm.put("descripcion", datos.getDescripcion());
             aList.add(hm);
         }
         // Keys used in Hashmap
-        String[] from = {"nombre", "email", "flag"};
+        String[] from = {"imagen", "descripcion"};
 
         // Ids of views in listview_layout
-        int[] to = {R.id.txt, R.id.cur, R.id.flag};
+        int[] to = {R.id.imgImagen, R.id.txtDescripcion};
 
         // Instantiating an adapter to store each items
         // R.layout.listview_layout defines the layout of each item
-        SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), aList, R.layout.listview_layout, from, to);
+        SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), aList, R.layout.seccion2, from, to);
         setListAdapter(adapter);
 
         return super.onCreateView(inflater, container, savedInstanceState);
