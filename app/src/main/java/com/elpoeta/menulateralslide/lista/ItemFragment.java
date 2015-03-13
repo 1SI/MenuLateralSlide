@@ -1,4 +1,4 @@
-package com.elpoeta.menulateralslide;
+package com.elpoeta.menulateralslide.lista;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -10,24 +10,21 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.elpoeta.menulateralslide.database.orm.Seas01;
+import com.elpoeta.menulateralslide.R;
 import com.elpoeta.menulateralslide.dummy.DummyContent;
-import com.elpoeta.menulateralslide.lista.ItemFragment;
-import com.elpoeta.menulateralslide.staticdata.ListaElementos;
-import com.elpoeta.menulateralslide.thread.GetData;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
- * Created by user on 26/08/2014.
+ * A fragment representing a list of Items.
+ * <p/>
+ * Large screen devices (such as tablets) are supported by replacing the ListView
+ * with a GridView.
+ * <p/>
+ * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
+ * interface.
  */
-public class Seccion2 extends Fragment implements AbsListView.OnItemClickListener {
+public class ItemFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,7 +40,7 @@ public class Seccion2 extends Fragment implements AbsListView.OnItemClickListene
     /**
      * The fragment's ListView/GridView.
      */
-    private ListView mListView;
+    private AbsListView mListView;
 
     /**
      * The Adapter which will be used to populate the ListView/GridView with
@@ -65,7 +62,7 @@ public class Seccion2 extends Fragment implements AbsListView.OnItemClickListene
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public Seccion2() {
+    public ItemFragment() {
     }
 
     @Override
@@ -85,53 +82,35 @@ public class Seccion2 extends Fragment implements AbsListView.OnItemClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        // Each row in the list stores country name, currency and flag
-        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
-        HashMap<String, String> hm = new HashMap<String, String>();
-        ArrayList<Seas01> datos = ListaElementos.getDatosSeas();
-
-        for (Seas01 fila : datos) {
-            hm.put("imagen", "http://thedevpotato.net76.net/img/" + fila.getImagen());
-            hm.put("descripcion", fila.getDescripcion());
-            hm.put("id", Integer.toString(fila.getId()));
-            aList.add(hm);
-        }
-
-        // Keys used in Hashmap
-        String[] from = {"imagen", "descripcion"};
-
-        // Ids of views in listview_layout
-        int[] to = {R.id.imgImagen, R.id.txtDescripcion};
-
-        // Instantiating an adapter to store each items
-        // R.layout.listview_layout defines the layout of each item
-        SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), aList, R.layout.elemento_lista, from, to);
-
         View view = inflater.inflate(R.layout.fragment_item, container, false);
 
         // Set the adapter
-        mListView = (ListView) view.findViewById(android.R.id.list);
-        ((AdapterView<ListAdapter>) mListView).setAdapter(adapter);
+        mListView = (AbsListView) view.findViewById(android.R.id.list);
+        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
 
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
 
-        return super.onCreateView(inflater, container, savedInstanceState);
-        //return view;
+        return view;
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            new GetData().execute();
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
         }
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -166,6 +145,7 @@ public class Seccion2 extends Fragment implements AbsListView.OnItemClickListene
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
         public void onFragmentInteraction(String id);
     }
 

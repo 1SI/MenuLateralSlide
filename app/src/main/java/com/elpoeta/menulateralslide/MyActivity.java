@@ -1,7 +1,5 @@
 package com.elpoeta.menulateralslide;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -17,8 +15,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.elpoeta.menulateralslide.navdrawer.NavDrawerItem;
+import com.elpoeta.menulateralslide.navdrawer.NavDrawerListAdapter;
 
-public class MyActivity extends Activity {
+import java.util.ArrayList;
+
+
+public class MyActivity extends Activity implements Seccion2.OnFragmentInteractionListener {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -105,9 +108,14 @@ public class MyActivity extends Activity {
         }
     }
 
+    @Override
+    public void onFragmentInteraction(String id) {
+
+    }
+
     /**
      * Slide menu item click listener
-     * */
+     */
     private class SlideMenuClickListener implements
             ListView.OnItemClickListener {
         @Override
@@ -152,7 +160,7 @@ public class MyActivity extends Activity {
 
     /**
      * Diplaying fragment view for selected nav drawer list item
-     * */
+     */
     private void displayView(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;

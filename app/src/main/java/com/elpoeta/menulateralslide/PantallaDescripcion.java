@@ -9,5 +9,4 @@ import android.widget.TextView;
 public class PantallaDescripcion {
     private ImageView img;
     private TextView txtDescripcion;
-
 }
